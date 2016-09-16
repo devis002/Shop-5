@@ -1,13 +1,15 @@
 package com.dao;
 
+
 import java.util.List;
 
-import com.model.Register;
+import com.model.RegistrationDetails;
 
-public interface RegisterDao {
-	public void add(Register register);
-	public void edit(Register register);
-	public void delete(int registerId);
-	public Register getRegister(int registerId);
-	public List getAllRegister();
+
+public interface RegisterDAO {
+
+	public void saveOrUpdate(RegistrationDetails regDetails);
+	public void update(RegistrationDetails regDetails);
+	public List getregbyid(String name);
+	
 }

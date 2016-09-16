@@ -38,4 +38,10 @@ public class ProductDaoImpl implements ProductDao{
 		return session.getCurrentSession().createQuery("from Product").list();
 	}
 
+	@Override
+	public List getnikon(String brand) {
+		return session.getCurrentSession().createQuery("from Product where category='"+brand+"'").list();
+	}
+
+
 }

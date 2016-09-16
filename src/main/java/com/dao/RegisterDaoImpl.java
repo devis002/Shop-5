@@ -1,43 +1,53 @@
 package com.dao;
 
+
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.model.Register;
+import com.model.Product;
+import com.model.RegistrationDetails;
+import com.model.UserAuthorization;
 
 
 @Repository
-public class RegisterDaoImpl implements RegisterDao {
-	@Autowired
-	 private SessionFactory session;
+@Transactional
+public class RegisterDAOImpl implements RegisterDAO {
+	
+	@Autowired(required=true)
+	SessionFactory sessionFactory;
+	
 
-	@Override
-	public void add(Register register) {
-		session.getCurrentSession().save(register);
-	}
+@Override
+public void saveOrUpdate(RegistrationDetails regDetails){
+	//if register done sucessfully it will automatically sets enabled
+	regDetails.setEnable(true);
+	UserAuthorization ua=new UserAuthorization();
+	ua.setRegdet(regDetails);
+	//if register done sucessfully it will automatically assign role user
+	ua.setRole("ROLE_USER");
+	
+	sessionFactory.getCurrentSession().saveOrUpdate(regDetails);
+	sessionFactory.getCurrentSession().saveOrUpdate(ua);
+}
 
-	@Override
-	public void edit(Register register) {
-		session.getCurrentSession().update(register);
-	}
 
-	@Override
-	public void delete(int registerId) {
-		session.getCurrentSession().delete(getRegister(registerId));
-		
-	}
+@Override
+public void update(RegistrationDetails regDetails) {
+	sessionFactory.getCurrentSession().update(regDetails);
+	
+}
 
-	@Override
-	public Register getRegister(int registerId) {
-		return (Register)session.getCurrentSession().get(Register.class, registerId);
-	}
 
-	@Override
-	public List getAllRegister() {
-		return session.getCurrentSession().createQuery("from Register").list();
-	}
+@Override
+public List getregbyid(String name) {
+	
+	return sessionFactory.getCurrentSession().createQuery("from RegistrationDetails where mail_id='"+name+"'").list();
+}
+
+
 
 }

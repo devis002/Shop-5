@@ -1,58 +1,114 @@
 package com.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Check;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product {
 	@Id
-	@Column
-	@GeneratedValue(strategy=GenerationType.AUTO) 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@JsonIgnore
 	private int productid;
-	@Column
+	@NotEmpty(message="Name is Mandatory")
 	private String productname;
-	@Column
-	private int productquantity;
-	@Column
-	private  String productdescription;
-	public Product(){}
-	public Product(int productproductid, String productname, int productquantity,
-			String poductdescription) {
-		super();
-		this.productid = productproductid;
-		this.productname = productname;
-		this.productquantity = productquantity;
-		this.productdescription = productdescription;
+	@NotNull(message="Quantity is needed")
+	private Integer productquantity;
+	@NotEmpty(message="Description is needed")
+	private String productdescription;
+	@NotEmpty(message="Category is mandatory")
+	private String category;
+	@NotNull(message="Price is needed")
+	@Min(value = 1)
+	private Integer productprice;
+	@NotEmpty(message="Image name is Mandatory")
+	private String imagename;
+	@Transient
+	private  MultipartFile image;
+
+
+	
+	public String getImagename() {
+		return imagename;
 	}
+
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+
+	public Integer getProductprice() {
+		return productprice;
+	}
+
+	public void setProductprice(Integer productprice) {
+		this.productprice = productprice;
+	}
+
+	public MultipartFile getImage() {
+		return image;
+		
+	}
+
+	public void setImage(MultipartFile image) {
+		this.image = image;
+	}
+
+	public int getProductid() {
+		return productid;
+	}
+
+	public void setProductid(int productid) {
+		this.productid = productid;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
 	public int getproductid() {
 		return productid;
 	}
+
 	public void setproductid(int productid) {
 		this.productid = productid;
 	}
+
 	public String getProductname() {
 		return productname;
 	}
+
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
-	public int getProductquantity() {
+
+	public Integer getProductquantity() {
 		return productquantity;
 	}
-	public void setProductquantity(int productquantity) {
+
+	public void setProductquantity(Integer productquantity) {
 		this.productquantity = productquantity;
 	}
+
 	public String getProductdescription() {
 		return productdescription;
 	}
+
 	public void setProductdescription(String productdescription) {
 		this.productdescription = productdescription;
 	}
-	
-	
+
 }

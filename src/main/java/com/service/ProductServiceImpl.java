@@ -15,9 +15,11 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private ProductDao productDao;
 	
+	
 	@Transactional
 	public void add(Product product) {
 		productDao.add(product);
+		
 	}
 
 	@Transactional
@@ -39,5 +41,12 @@ public class ProductServiceImpl implements ProductService{
 	public List getAllProduct() {
 		return productDao.getAllProduct();
 	}
+
+	@Transactional
+	public List getnikon(String brand) {
+		
+		return productDao.getnikon(brand);
+	}
+
 
 }

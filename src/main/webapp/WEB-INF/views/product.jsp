@@ -2,50 +2,143 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ include file="/WEB-INF/views/includes.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Shop</title>
+<meta charset="utf-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+.error{
+color:#ff0033;
+font-style:italic;
+font-weight:bold;
+
+}
+</style>
 </head>
 <body>
-	<h1>Products Data</h1>
-	<form:form action="product.do" method="POST" commandName="product">
-		<table>
-			<tr>
-				<td>Product ID</td>
-				<td><form:input path="productid" /></td>
-			</tr>
-			<tr>
-				<td>Product name</td>
-				<td><form:input path="productname" /></td>
-			</tr>
-			<tr>
-				<td>Product quantity</td>
-				<td><form:input path="productquantity" /></td>
-			</tr>
-			<tr>
-				<td>Product Description</td>
-				<td><form:input path="productdescription" /></td>
-			</tr>
+	<jsp:include page="includes.jsp" />
+	<jsp:include page="header.jsp" />
+	<div class="container">
+		<h2>Add Product</h2>
+		<hr>
+		<form:form action="crudoper" method="POST"
+			enctype="multipart/form-data" commandName="product">
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="form-group col-md-5">
+					<label for="sel1">Select list:</label>
+					<form:select class="form-control " path="category" id="sel1">
+						<form:option value="Nikon">Nikon</form:option>
+						<form:option value="Canon">Canon</form:option>
+						<form:option value="Sony">Sony</form:option>
+					</form:select>
+				</div>
+			</div>
 
-			</form>
-			<tr>
-				<td colspan="2"><input type="submit" name="action" value="Add" />
-					<input type="submit" name="action" value="Edit" /> <input
-					type="submit" name="action" value="Delete" /> <input type="submit"
-					name="action" value="Search" /></td>
-			</tr>
-		</table>
-		<form method="POST" action="upload" enctype="multipart/form-data">
-			File to upload: <input type="file" name="file"> Name: <input
-				type="text" name="name"> <input type="submit" value="Upload">
-			Press here to upload the file!
-			<td>${name}</td>
-			</form>
-	</form:form>
-<a href="viewall">viewall</a>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="email">ProductId:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="email"
+							placeholder="Enter id" path="productid"></form:input>
+						
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">ProductName:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter name" path="productname"></form:input>
+						<form:errors path="productname" cssClass="error" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">ProductQuantity:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter quantity" path="productquantity"></form:input>
+						<form:errors path="productquantity" cssClass="error" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">ProductPrice:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter price" path="productprice"></form:input>
+						<form:errors path="productprice" cssClass="error" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">ProductDescription:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter description" path="productdescription"></form:input>
+						<form:errors path="productdescription" cssClass="error" />
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">Image:</label>
+					<div class="col-md-5">
+						<form:input type="file" class="form-control" id="pwd"
+							placeholder="Enter image" path="image"></form:input>
+						<form:errors path="image" cssClass="error" />
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">Imagename:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter imagename" path="imagename"></form:input>
+						<form:errors path="imagename" cssClass="error" />
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<button type="submit" name="action" value="Add"
+							class="btn btn-default">Add</button>
+						<button type="submit" name="action" value="Edit"
+							class="btn btn-default">Edit</button>
+					</div>
+				</div>
+			</div>
+		</form:form>
+	</div>
 </body>
-
+<jsp:include page="footer.jsp" />
 </html>

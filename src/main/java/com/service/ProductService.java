@@ -12,4 +12,5 @@ public interface ProductService {
 	public void delete(int productId);
 	public Product getProduct(int productId);
 	public List getAllProduct();
+	public List getnikon(String brand);
 }

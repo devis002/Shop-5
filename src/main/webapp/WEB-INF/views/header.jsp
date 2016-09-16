@@ -1,12 +1,14 @@
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon"  href="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
@@ -20,90 +22,129 @@
 <link href="<c:url value="/resources/bootstrap/css/style.css"/>"
 	rel="stylesheet">
 </head>
+<style>
+body {
+	background-color: black;
+	color: white
+}
+
+.menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu li {
+	padding: 8px;
+	margin-bottom: 7px;
+	background-color: #33b5e5;
+	color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.menu li:hover {
+	background-color: #0099cc;
+}
+
+.aside {
+	background-color: #33b5e5;
+	padding: 15px;
+	color: #ffffff;
+	text-align: center;
+	font-size: 14px;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+hr {
+	color: white;
+}
+
+div.img {
+	margin: 5px;
+	border: 1px solid #ccc;
+	float: left;
+	width: 180px;
+}
+
+div.img:hover {
+	border: 1px solid #777;
+}
+
+div.img img {
+	width: 100%;
+	height: auto;
+}
+
+div.desc {
+	padding: 15px;
+	text-align: center;
+}
+</style>
+<!-- Script for logout -->
+<script>
+	function formSubmit() {
+		document.getElementById("logoutForm").submit();
+	}
+</script>
+<c:url value='logout' var="logoutUrl" />
+<form action="${logoutUrl}" method="post" id="logoutForm"></form>
 <body>
-<p align="right">
-		Existing User| <a href="login">Login</a>
-	</p>
-	<p align="right">
-		New User | <a href="register">Register</a>
-	</p>
-	<h1>
-		CLIKART
+	<!--Navigation Bar-->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+			<!-- Clickart logo -->
+			<a class="navbar-brand" href="<c:url value="/home"/>"><img class="img-responsive logo" src="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png" alt="" width="50" height="50"></a>
+				<a class="navbar-brand" style="color: white" href="<c:url value="/home"/>">Clickart</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="<c:url value="/home"/>" style="color: white">Home</a></li>
+				<li><a href="<c:url value="/viewall"/>" style="color: white">view all</a></li>
+				<li><a href="<c:url value="/Angularview"/>" style="color: white">Angular view</a></li>
 
-		<h4 align="center">contact us on: 044 253 351 or
-			clickart@hotmail.com</h4>
+				<!--DropDown Button 1-->
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" style="color: white">Brands<strong
+						class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/nikonbrand"/>">Nikon</a></li>
+						<li><a href="<c:url value="/canonbrand"/>">Canon</a></li>
+						<li><a href="<c:url value="/sonybrand"/>">Sony</a></li>
 
-	</h1>
-	</div>
-	<div class="row">
-		<div class="co-12">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
+					</ul></li>
+					<!-- Add Product Only used by admin -->
+				<security:authorize access="hasRole('ROLE_ADMIN')">
+					<li><a href="<c:url value="/product"/>" style="color: white">AddProduct</a></li>
+				</security:authorize>
+			</ul>
+			
+			
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${!empty pageContext.request.userPrincipal.name}">
+					<li><a href="<c:url value="/home"/>" style="color: white"> <span
+							class="glyphicon glyphicon-user"></span>Hi..${pageContext.request.userPrincipal.name}
+					</a></li>
+					<security:authorize access="hasRole('ROLE_USER')">
+						<li><a href="cart" style="color: white"><span
+								class="glyphicon glyphicon-shopping-cart"></span><span class="badge">4</span>MyCart</a></li>
+					</security:authorize>
+					<li><a href="javascript:formSubmit()" style="color: white"><span
+							class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+				</c:if>
+			</ul>
 
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span><span
-							class="icon-bar"></span><span class="icon-bar"></span><span
-							class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">HOME</a>
-				</div>
-
-				<div class="collapse navbar-collapse"
-					id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">BRANDS<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Nikon</a></li>
-								<li><a href="#">Canon</a></li>
-								<li><a href="#">Sony</a></li>
-
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">CATEGORY<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">DSLR</a></li>
-								<li><a href="#">Point and Shoot</a></li>
-								<li><a href="#">Instant</a></li>
-								<li><a href="#">Action and LifeStyle</a></li>
-
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">ACCESSORIES<strong class="caret"></strong></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Camera Bag</a></li>
-								<li><a href="#">Camera Lens</a></li>
-								<li><a href="#">Tripod</a></li>
-								<li><a href="#">MemoryCard</a></li>
-
-							</ul></li>
-						</button>
-						<a class="navbar-brand" href="product">Product</a>
-
-
-					</ul>
-					<ul class="nav navbar-nav pull-right">
-						<a href="#" class="btn btn-default btn-lg "> <span
-							class="glyphicon glyphicon-shopping-cart"></span> My Cart
-						</a>
-
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<span class="glyphicon glyphicon-search"></span> <input
-								type="text" class="form-control " autofocus
-								placeholder="so,What are you wishing for today" size="40">
-						</div>
-						<button type="submit" class="btn btn-default">Search</button>
-					</form>
-
-				</div>
-
-			</nav>
+			<!-- for anonymous user or non register user withoutusername -->
+			<ul class="nav navbar-nav navbar-right">
+				<c:if test="${empty pageContext.request.userPrincipal.name}">
+					<li><a href="<c:url value="/cart"/>" style="color: white"><span
+							class="glyphicon glyphicon-shopping-cart"></span><span class="badge">4</span> My Cart</a></li>
+					<li><a href="<c:url value="/memberShip.obj"/>" style="color: white"><span
+							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+					<li><a href="login" style="color: white"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				</c:if>
+			</ul>
+			
 		</div>
-	</div>
-
-</body>
-
-</html>
+	</nav>
+	<hr>

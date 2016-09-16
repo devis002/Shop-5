@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<on-start>
+		<evaluate expression="shipmentHandler.initFlow()" result="flowScope.shipment" />
+	</on-start>
+
+	<!-- if not specified the first view state is the starting state -->
+	<view-state id="start" view="shipment" model="flowScope.shipment">
+		<transition on="submit" to="saveaddress" />
+	</view-state>
+
+	<action-state id="saveaddress">
+		<evaluate expression="shipmentHandler.saveaddress(shipment)"></evaluate>
+		<transition to="confirmAddress" />
+	</action-state>
+
+	<view-state id="confirmAddress" view="confirmShipment"
+		model="flowScope.shipment">
+		<transition on="edit" to="start" />
+		<transition on="submit" to="payment" />
+	</view-state>
+
+	<end-state id="payment" view="Payment" />
+	<end-state id="toHome" view="externalRedirect:contextRelative:index.jsp" />
+	<end-state id="toException" view="externalRedirect:contextRelative:exception.jsp" />
+
+</flow>
