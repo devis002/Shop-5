@@ -14,6 +14,9 @@ public class CartItemsDaoImpl implements CartItemsDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+
+	
+	
 	@Override
 	public void add(CartItems cartItems) {
 
@@ -49,7 +52,13 @@ public class CartItemsDaoImpl implements CartItemsDao {
 
 	@Override
 	public void drop() {
-		sessionFactory.getCurrentSession().createQuery("drop table cart");
+		
+		/*List<CartItems> cidi=cartDao.getAllProduct();
+		for(int i=0;i<cidi.size();i++)
+		{
+			cartDao.delete(cidi.get(i).getCartItemId());
+		}*/
+		
 	}
 
 	

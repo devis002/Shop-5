@@ -64,7 +64,7 @@ public class ProductController {
 		return"redirect:/viewall";
 	}
 	
-	//mehtod for edditing the product based on product id admin usage in view all page
+	//method for editing the product based on product id admin usage in view all page
 	@RequestMapping("edit/{productid}")
 	public String edititem(@PathVariable("productid")int id,@ModelAttribute Product product, BindingResult result,Map<String, Object> map)
 	{	

@@ -125,7 +125,7 @@ div.desc {
 							class="glyphicon glyphicon-user"></span>Hi..${pageContext.request.userPrincipal.name}
 					</a></li>
 					<security:authorize access="hasRole('ROLE_USER')">
-						<li><a href="cart" style="color: white"><span
+						<li><a href="<c:url value="/cart"/>" style="color: white"><span
 								class="glyphicon glyphicon-shopping-cart"></span><span class="badge">4</span>MyCart</a></li>
 					</security:authorize>
 					<li><a href="javascript:formSubmit()" style="color: white"><span

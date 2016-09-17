@@ -16,7 +16,7 @@ public class CartItemsServiceImpl implements CartItemsService {
 	
 	@Transactional
 	public void add(CartItems cart) {
-		System.out.println("adding in cart service");
+		
 		cartDao.add(cart);
 		
 	}

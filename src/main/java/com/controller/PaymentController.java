@@ -28,8 +28,10 @@ public class PaymentController {
 	      paymentService.add(name);
 	      paymentService.order(name);
 	      //paymentService.cartitemtbl();
-	      return"sucess";
+	      return "sucess";
 	      
 	}
+	 
+	 
 
 }

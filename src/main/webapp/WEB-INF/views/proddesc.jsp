@@ -33,6 +33,7 @@
 </head>
 
 <body>
+<jsp:include page="includes.jsp" />
 <jsp:include page="header.jsp" />
 	<div class="row">
 	<div class="col-md-4">
