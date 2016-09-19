@@ -30,7 +30,8 @@ public class CartController {
 		List<CartItems> crt=cartService.getAllProduct();
 		/*for searching the table whether the product is new or exist*/
 		for(int i=0;i<crt.size();i++)
-		{
+		{	
+			//get product id from the cartitem table
 			int tempid=crt.get(i).getProduct().getproductid();
 			//for update the existing product
 			if(tempid==id)
@@ -65,7 +66,7 @@ public class CartController {
 	public String getcart(Model map )
 	{
 		CartItems cart=new CartItems();
-		List<CartItems> crt=cartService.getAllProduct();
+		//List<CartItems> crt=cartService.getAllProduct();
 		map.addAttribute("cart", cart);
 		map.addAttribute("cartList", cartService.getAllProduct());
 		return "cart";

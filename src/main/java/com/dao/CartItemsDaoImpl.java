@@ -2,6 +2,8 @@ package com.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +15,7 @@ import com.model.CartItems;
 public class CartItemsDaoImpl implements CartItemsDao {
 	@Autowired
 	private SessionFactory sessionFactory;
-
+	
 	@Override
 	public void add(CartItems cartItems) {
 
@@ -47,11 +49,7 @@ public class CartItemsDaoImpl implements CartItemsDao {
 		
 	}
 
-	@Override
-	public void drop() {
-		sessionFactory.getCurrentSession().createQuery("drop table cart");
-	}
-
+	
 	
 
 

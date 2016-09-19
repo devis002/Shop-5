@@ -11,7 +11,7 @@ import com.model.CartItems;
 @Service
 public class CartItemsServiceImpl implements CartItemsService {
 
-	@Autowired
+	@Autowired(required=true)
 	private CartItemsDao cartDao;
 	
 	@Transactional

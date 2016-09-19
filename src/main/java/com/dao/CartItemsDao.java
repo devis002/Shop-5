@@ -11,7 +11,6 @@ public interface CartItemsDao {
 	public void update(CartItems CartItems);
 	public CartItems getProductById(int id);
 	public void delete(int id);
-		public void drop();
 	
 
 

@@ -45,7 +45,6 @@ public class ProductController {
 	@RequestMapping("/ang")
 	 public @ResponseBody List<Product> getAllProds() {
 	  List<Product> l =null;
-	  System.out.println("inside angular view controller");
 	  try{
 	  l= productService.getAllProduct();
 	   }
@@ -80,7 +79,6 @@ public class ProductController {
 	public String proddesc(@PathVariable("productid")int id,@ModelAttribute Product product, BindingResult result,Map<String, Object> map)
 	{	
 		product=productService.getProduct(id);
-		System.out.println(product);
 		map.put("product", product);
 		map.put("productList", productService.getAllProduct());
 		return "proddesc";

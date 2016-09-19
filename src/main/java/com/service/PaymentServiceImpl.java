@@ -23,10 +23,11 @@ public class PaymentServiceImpl implements PaymentService {
 		
 	}
 	@Transactional
-	public void cartitemtbl() {
-		PaymentDao.cartitemtbl();
+	public void CartItems() {
+		PaymentDao.CartItems();
 		
 	}
+	
 	
 
 }

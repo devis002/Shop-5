@@ -13,7 +13,6 @@
 <script type="text/javascript">
 	angular.module('myApp', []).controller('mainController',function($scope, $http) {
 				$scope.categ;
-				console.log("im in getProduct");
 				$http({method : 'GET',url : 'ang'}).success(function(data, status, headers, config)
 				{		
 					$scope.categ = data;
