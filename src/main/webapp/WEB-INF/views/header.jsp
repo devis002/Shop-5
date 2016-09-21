@@ -125,8 +125,8 @@ div.desc {
 							class="glyphicon glyphicon-user"></span>Hi..${pageContext.request.userPrincipal.name}
 					</a></li>
 					<security:authorize access="hasRole('ROLE_USER')">
-						<li><a href="cart" style="color: white"><span
-								class="glyphicon glyphicon-shopping-cart"></span><span class="badge">4</span>MyCart</a></li>
+						<li><a href="<c:url value="/cart"/>" style="color: white"><span
+								class="glyphicon glyphicon-shopping-cart"></span>MyCart</a></li>
 					</security:authorize>
 					<li><a href="javascript:formSubmit()" style="color: white"><span
 							class="glyphicon glyphicon-log-out"></span>Logout</a></li>
@@ -137,10 +137,10 @@ div.desc {
 			<ul class="nav navbar-nav navbar-right">
 				<c:if test="${empty pageContext.request.userPrincipal.name}">
 					<li><a href="<c:url value="/cart"/>" style="color: white"><span
-							class="glyphicon glyphicon-shopping-cart"></span><span class="badge">4</span> My Cart</a></li>
+							class="glyphicon glyphicon-shopping-cart"></span> My Cart</a></li>
 					<li><a href="<c:url value="/memberShip.obj"/>" style="color: white"><span
 							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="login" style="color: white"><span
+					<li><a href="<c:url value="/login"/>" style="color: white"><span
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				</c:if>
 			</ul>

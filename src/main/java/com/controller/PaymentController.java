@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.CartItems;
+import com.model.Email;
 import com.model.Product;
 import com.service.CartItemsService;
 import com.service.PaymentService;
@@ -23,7 +24,9 @@ public class PaymentController {
 	private  PaymentService paymentService;
 	@Autowired
 	private CartItemsService cartItems;
-	/* @ModelAttribute
+	@Autowired
+	private Email email;
+	 @ModelAttribute
 	 @RequestMapping("/sucess")
 	 //for mapping the order table and cart table with customer table after sucessful purchase
 	public String getuserdata(HttpServletRequest req)
@@ -32,12 +35,15 @@ public class PaymentController {
 		 String name = auth.getName(); 
 	      paymentService.add(name);
 	      paymentService.order(name);
+	      email.send(name);
 	      paymentService.CartItems();
+	     // Email email=new Email();
+	      
 	      return"sucess";
 	      
-	}*/
+	}
 	 
-	//angular view get all the product details from the table
+	/*//angular view get all the product details from the table
 		@RequestMapping("/sucess")
 		 public @ResponseBody List<CartItems> getAllProds() {
 		  List<CartItems> l =null;
@@ -49,7 +55,7 @@ public class PaymentController {
 		   l=null;
 		  }
 		  return l;
-		 }
+		 }*/
 
 
 }

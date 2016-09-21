@@ -102,7 +102,7 @@
 }
 body {
   background: black; /* fallback for old browsers */
-  background-image: url("https://media.giphy.com/media/mCGZhRjavuqYg/giphy.gif");
+  background-image: url("https://media.giphy.com/media/3o6ZtjMYa3hQMpHPLq/giphy.gif");
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      

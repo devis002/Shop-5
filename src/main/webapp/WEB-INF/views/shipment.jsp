@@ -124,7 +124,8 @@ label {
 					accept-charset="utf-8" class="form">
 					
 
-					<form:input path="name" pattern="[a-zA-Z]{3,30}" required="true"
+					<form:input path="name" pattern="[a-zA-Z]{3,30}" required="true" oninvalid="setCustomValidity('Plz enter on Alphabets from 3 to 30 chars')"
+						onchange="try{setCustomValidity('')}catch(e){}"
 						class="form-control input-lg" placeholder="Name" />
 					
 					<br />
@@ -134,13 +135,15 @@ label {
 					
 					<br />
 					
-					<form:input path="mobilenumber" pattern="[9|7|8][0-9]{9}"
+					<form:input path="mobilenumber" pattern="[9|7|8][0-9]{9}" oninvalid="setCustomValidity('must contain 10 numerics and starts with 9 or 8 or 7')"
+						onchange="try{setCustomValidity('')}catch(e){}"
 						required="true" class="form-control input-lg"
 						placeholder="Your Mobile Number" />
 					
 					<br />
 					
-					<form:input path="pincode" id="pincode" required="true"
+					<form:input path="pincode" id="pincode" pattern="[6][0-9]{5}" oninvalid="setCustomValidity('Must contain 6 numerics and strats with 6')"
+						onchange="try{setCustomValidity('')}catch(e){}" required="true"
 						class="form-control input-lg" placeholder="Pincode" />
 					
 					<br />

@@ -47,12 +47,10 @@
 			<hr>
 			<center><h3>RS${product.productprice}</h3></center>
 			<hr>
-			<div class="col-md-6">
-				<a href="sportwatch" class="btn btn-default "> Buy</a>
-			</div>
-			<div class="col-md-6">
+			
+			<center><div class="col-md-12">
 				<a href="<c:url value='addtocart/${product.productid}'/>" class="btn btn-default" onclick="return Validate()"> <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-			</div>
+			</div></center>
 		</div>
 	</div>
 

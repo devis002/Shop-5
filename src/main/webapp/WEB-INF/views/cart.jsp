@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <table class="table table-hover">
+            <table class="table ">
             <thead>
                     <tr>
                         <th>Product</th>
@@ -36,15 +36,16 @@
                     <tr>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<c:url value="resources/images/${cart.product.imagename}.jpg"/>" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left" > <img class="media-object" src="<c:url value="resources/images/${cart.product.imagename}.jpg"/>" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
-                                <h4 class="media-heading" style=color:white ><a href="home"> ${cart.product.productname}</a></h4>
+                                <h4 class="media-heading" style=color:white >${cart.product.productname}</h4>
                                
                             </div>
                         </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                        <%-- <td class="col-sm-1 col-md-1" style="text-align: center">
                         <input type="text" class="form-control" id="exampleInputEmail1" value="${cart.quantity}">
-                        </td>
+                        </td> --%>
+                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.quantity}" /></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.totalPrice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1">

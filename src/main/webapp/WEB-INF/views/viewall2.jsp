@@ -13,6 +13,7 @@
 <title>Viewall</title>
 
 </head>
+<jsp:include page="includes.jsp" />
 <jsp:include page="header.jsp" />
 	<!--Container 1-->
 <div class="row">

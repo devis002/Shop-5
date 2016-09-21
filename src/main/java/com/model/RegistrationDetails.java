@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 		private String mobile_number;
 		private Boolean enable;
 		@OneToOne
-		@JoinColumn(name="id")
+		@JoinColumn(name="Cart_id")
 		private Cart cart;
 		
 		public Cart getCart() {

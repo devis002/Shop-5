@@ -19,8 +19,8 @@ public class Email {
 		String subject = "Clickart welcomes you";
  
 		// email body
-		String body = "Welcome to the Clickart "+"."+System.getProperty("line.separator")
-				+"Thanks to begin with us."+System.getProperty("line.separator")
+		String body = "Your Product will be delivered soon"+"."+System.getProperty("line.separator")
+				+"Thanks for shopping with us."+System.getProperty("line.separator")
 				+System.getProperty("line.separator")
 				+System.getProperty("line.separator")
 				+System.getProperty("line.separator")

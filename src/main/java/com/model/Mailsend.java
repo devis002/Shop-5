@@ -16,10 +16,7 @@ public class Mailsend {
 		msgdetails.setFrom(fromAddress);
 		msgdetails.setTo(toAddress);
 		msgdetails.setSubject(subject);
-		/*for(int i=0;i<msgBody.size();i++)
-		{
-			msgdetails.setText(msgBody.get(i).getProduct().getProductname());
-		}*/
+		msgdetails.setText(msgBody);
 		
 		mailsend.send(msgdetails);
 
