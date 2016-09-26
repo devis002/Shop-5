@@ -1,10 +1,13 @@
 package com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.PaymentDao;
+import com.model.Cart;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -12,8 +15,8 @@ public class PaymentServiceImpl implements PaymentService {
 	@Autowired
 	private PaymentDao PaymentDao;
 	@Transactional
-	public void add(String username) {
-		PaymentDao.addcart(username);
+	public void add(String username,Cart cart) {
+		PaymentDao.addcart(username,cart);
 	
 		
 	}
@@ -26,6 +29,10 @@ public class PaymentServiceImpl implements PaymentService {
 	public void CartItems() {
 		PaymentDao.CartItems();
 		
+	}
+	@Transactional
+	public List getallorders() {
+	return PaymentDao.getallorders();
 	}
 	
 	

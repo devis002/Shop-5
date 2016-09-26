@@ -16,7 +16,7 @@ public class CartItemsServiceImpl implements CartItemsService {
 	
 	@Transactional
 	public void add(CartItems cart) {
-		System.out.println("adding in cart service");
+		
 		cartDao.add(cart);
 		
 	}
@@ -40,6 +40,16 @@ public class CartItemsServiceImpl implements CartItemsService {
 	@Transactional
 	public void delete(int id) {
 		 cartDao.delete(id);
+	}
+
+	@Transactional
+	public List getbyname(String name) {
+		return cartDao.getbyname(name);
+	}
+
+	@Transactional
+	public int cartLength() {
+		return cartDao.cartLength();
 	}
 
 }

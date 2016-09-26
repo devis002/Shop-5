@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/views/includes.jsp"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -37,30 +38,31 @@
 
 							<h3>
 								<hr>
-								<center><label>${product.productprice}</label></center>
+								<center><label><i class="fa fa-inr" style="color:black" ><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></i></label></center>
 							</h3>
 							<hr>
 						</div>
 					</div>
+					<security:authorize access="hasAnyRole('ROLE_ADMIN')"> 
+					<div class="row">
+						<div class="col-md-12">
+						<h4>
+						<center>Qty:${product.productquantity}</center>
+						</h4>
+						</div>
+					</div>
+					</security:authorize>
 					<security:authorize access="hasAnyRole('ROLE_ANONYMOUS')"> 
 					<div class="row">
 						<div class="col-md-12">
 						<center><a href="<c:url value='desc/${product.productid}'/>" class="btn btn-default  "><span class="glyphicon glyphicon-th-list"></span> view in detail</a></center>
 						</div>
-						<%-- <div class="col-md-6">
-							<a href="addtocart/${product.productid}" class="btn btn-default"><span
-								class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-						</div> --%>
 					</div>
 					</security:authorize> <security:authorize access="hasRole('ROLE_USER')"> 
 					<div class="row">
 						<div class="col-md-12">
 							<center><a href="<c:url value='desc/${product.productid}'/>" class="btn btn-default "><span class="glyphicon glyphicon-th-list"></span>view in detail</a></center>
 						</div>
-						<%-- <div class="col-md-6">
-							<a href="addtocart/${product.productid}" onClick="message()" class="btn btn-default"><span
-								class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-						</div> --%>
 					</div>
 					</security:authorize> 
 					

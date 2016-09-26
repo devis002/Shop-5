@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.model.CartItems;
 import com.model.Product;
 import com.service.ProductService;
 
@@ -167,5 +169,15 @@ public class ProductController {
 		return "product";
 	}
 
-	
+	public void updateproduct( List<CartItems> cartitems)
+	{		Product product = new Product();
+			int id;
+			for(int i=0;i<cartitems.size();i++)
+			{	
+				id=cartitems.get(i).getProduct().getProductid();
+				product=productService.getProduct(id);
+				product.setProductquantity(product.getProductquantity()-cartitems.get(i).getQuantity());
+				productService.edit(product);
+			}
+	}
 }

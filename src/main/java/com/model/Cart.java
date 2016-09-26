@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -29,6 +31,49 @@ public class Cart {
     private RegistrationDetails registrationDetails;
 
     private double grandTotal;
+    
+    private int quantity;
+    
+    private String date;
+    
+    private String time;
+    
+
+	@ManyToOne
+    @JoinColumn(name = "productId")
+    private Product product;
+	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product li) {
+		this.product = li;
+	}
 
 	public int getCartId() {
 		return cartId;

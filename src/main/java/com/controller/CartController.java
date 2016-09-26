@@ -2,6 +2,9 @@ package com.controller;
 
 import java.util.List;
 
+import javax.persistence.metamodel.SetAttribute;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +24,10 @@ public class CartController {
 	@Autowired
 	private ProductService productService;
 	
+	
 	//method for add and update the cart table
 	@RequestMapping("desc/addtocart/{productid}")
-	public String  addtocart(@PathVariable("productid")int id)
+	public String  addtocart(@PathVariable("productid")int id,HttpSession session)
 	{
 		CartItems cart=new CartItems();
 		Product pr=productService.getProduct(id);
@@ -49,15 +53,19 @@ public class CartController {
 		cart.setTotalPrice(pr.getProductprice());
 		cart.setProduct(pr);
 		cartService.add(cart);
+		session.setAttribute("cartlength", cartService.cartLength());
 		return "redirect:/desc/"+id;
+		
 	}
 	
 	
 	//method to delete the cart item based on product id
 	@RequestMapping("delete/cart/{id}")
-	public String delcart(@PathVariable("id")int id,ModelMap model)
+	public String delcart(@PathVariable("id")int id,ModelMap model,HttpSession session)
 	{	
+		
 		cartService.delete(id);
+		session.setAttribute("cartlength", cartService.cartLength());
 		return"redirect:/cart";
 	}
 	

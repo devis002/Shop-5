@@ -152,7 +152,7 @@ label {
 						<div class="col-md-6">
 							<button class="btn btn-lg btn-primary btn-block signup-btn"
 								name="_eventId_submit" type="submit" id="btnSubmit"
-								value="submit" >Register</button>
+								value="submit" >Submit</button>
 						</div>
 					</div>
 				</form:form>

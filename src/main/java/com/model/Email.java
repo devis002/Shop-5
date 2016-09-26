@@ -9,10 +9,10 @@ public class Email {
 	
 	@Autowired
 	Mailsend mailtouser;
-	public void send(String email)
+	public void send(String email,int orderid)
 	{
 	
-		String toAddr = email;
+		String toAddr = "starsibi@gmail.com";
 		String fromAddr = "clickdslr@hotmail.com";
  
 		// email subject
@@ -23,7 +23,7 @@ public class Email {
 				+"Thanks for shopping with us."+System.getProperty("line.separator")
 				+System.getProperty("line.separator")
 				+System.getProperty("line.separator")
-				+System.getProperty("line.separator")
+				+"Your order id is "+orderid+". Please keep it for future use"+System.getProperty("line.separator")
 				+ "------------"+System.getProperty("line.separator")
 				+ "-Clickart";
 		mailtouser.mailmethod(toAddr, fromAddr, subject, body);

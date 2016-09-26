@@ -1,5 +1,10 @@
 package com.controller;
 
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +15,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.model.Cart;
 import com.model.CartItems;
 import com.model.Email;
-import com.model.Product;
+import com.model.Orders;
 import com.service.CartItemsService;
 import com.service.PaymentService;
 
@@ -26,36 +31,42 @@ public class PaymentController {
 	private CartItemsService cartItems;
 	@Autowired
 	private Email email;
-	 @ModelAttribute
+	@Autowired
+	private ProductController productController;
+	
+	 
+	@ModelAttribute
 	 @RequestMapping("/sucess")
 	 //for mapping the order table and cart table with customer table after sucessful purchase
 	public String getuserdata(HttpServletRequest req)
 	{	//for getting the loggedin username
 		 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		 String name = auth.getName(); 
-	      paymentService.add(name);
-	      paymentService.order(name);
-	      email.send(name);
-	      paymentService.CartItems();
-	     // Email email=new Email();
-	      
+		 List<CartItems> list=cartItems.getAllProduct();
+		 Cart cart=new Cart();
+		 DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd ");
+	     Date date = new Date();
+	     DateFormat dateFormats = new SimpleDateFormat("hh:mm:ss a");
+	     Calendar cal = Calendar.getInstance();
+	     productController.updateproduct(list);
+		 for (int i=0;i<list.size();i++)
+		 {
+		     String Date=dateFormat.format(date);
+             String Time=dateFormats.format(cal.getTime());
+			 cart.setDate(Date);
+			 cart.setTime(Time);
+             cart.setProduct(list.get(i).getProduct());
+			 cart.setQuantity(list.get(i).getQuantity());
+			 paymentService.add(name,cart);  
+			 
+		 }
+		   
+	     paymentService.order(name);
+	     List<Orders> ordlist=paymentService.getallorders();
+	     email.send(name,ordlist.get(ordlist.size()-1).getOrderId());
+	     paymentService.CartItems();	      
 	      return"sucess";
-	      
-	}
-	 
-	/*//angular view get all the product details from the table
-		@RequestMapping("/sucess")
-		 public @ResponseBody List<CartItems> getAllProds() {
-		  List<CartItems> l =null;
-		  try{
-		  l= cartItems.getAllProduct();
-		   }
-		  catch(Exception es)
-		  {
-		   l=null;
-		  }
-		  return l;
-		 }*/
-
-
+	     }
+			
+		
 }

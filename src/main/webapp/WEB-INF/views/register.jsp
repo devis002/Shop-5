@@ -15,6 +15,7 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="resources/js/bootbox.min.js"></script>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
 	rel='stylesheet' type='text/css'>
@@ -116,10 +117,6 @@ label {
 	animation-duration: 1s;
 }
 
-
- 
-
-}
 </style>
 </head>
 <body>
@@ -215,7 +212,12 @@ label {
     function Validate() {
         var password = document.getElementById("txtPassword").value;
         var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        
         if (password != confirmPassword) {
+        	bootbox.alert({
+                message: "Password do not match",
+                size: 'small'
+            });
             alert("Passwords do not match.");
             return false;
         }

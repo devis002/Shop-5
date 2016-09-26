@@ -101,7 +101,9 @@ div.desc {
 				<li><a href="<c:url value="/home"/>" style="color: white">Home</a></li>
 				<li><a href="<c:url value="/viewall"/>" style="color: white">view all</a></li>
 				<li><a href="<c:url value="/Angularview"/>" style="color: white">Angular view</a></li>
-
+				<security:authorize access="hasRole('ROLE_USER')">
+				<li><a href="<c:url value="/myorders"/>" style="color: white">Myorders</a></li> 
+				</security:authorize>
 				<!--DropDown Button 1-->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" style="color: white">Brands<strong
@@ -126,7 +128,7 @@ div.desc {
 					</a></li>
 					<security:authorize access="hasRole('ROLE_USER')">
 						<li><a href="<c:url value="/cart"/>" style="color: white"><span
-								class="glyphicon glyphicon-shopping-cart"></span>MyCart</a></li>
+								class="glyphicon glyphicon-shopping-cart"><span class="badge">${cartlength}</span></span>MyCart</a></li>
 					</security:authorize>
 					<li><a href="javascript:formSubmit()" style="color: white"><span
 							class="glyphicon glyphicon-log-out"></span>Logout</a></li>
@@ -137,7 +139,7 @@ div.desc {
 			<ul class="nav navbar-nav navbar-right">
 				<c:if test="${empty pageContext.request.userPrincipal.name}">
 					<li><a href="<c:url value="/cart"/>" style="color: white"><span
-							class="glyphicon glyphicon-shopping-cart"></span> My Cart</a></li>
+							class="glyphicon glyphicon-shopping-cart"><span class="badge">${cartlength}</span></span> My Cart</a></li>
 					<li><a href="<c:url value="/memberShip.obj"/>" style="color: white"><span
 							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 					<li><a href="<c:url value="/login"/>" style="color: white"><span

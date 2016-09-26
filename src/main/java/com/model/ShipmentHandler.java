@@ -1,5 +1,14 @@
 package com.model;
 
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +28,19 @@ public class ShipmentHandler {
 	@Autowired
 	HttpServletRequest req;
 	public Shipment initFlow(){
-		System.out.println("Shipment Object gets created");
+		try {
+            Robot robot = new Robot();
+            String format = "jpg";
+            String fileName = "F:/projectscreen/FullScreenshot." + format;
+             
+            Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+            BufferedImage screenFullImage = robot.createScreenCapture(screenRect);
+            ImageIO.write(screenFullImage, format, new File(fileName));
+             
+            System.out.println("A full screenshot saved!");
+        } catch (AWTException | IOException ex) {
+            System.err.println(ex);
+        }
 		return new Shipment();
 		
 	}

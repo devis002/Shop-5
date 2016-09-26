@@ -10,5 +10,6 @@ public interface CartItemsService {
 	public CartItems getProductById(int id);
 	public void update(CartItems cart);
 	public void delete(int id);
-
+	public List getbyname(String name);
+	public int cartLength();
 }
