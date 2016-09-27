@@ -28,6 +28,7 @@ public class ProductController {
 	private ServletContext servletContext;
 	@Autowired
 	private ProductService productService;
+	
 	@RequestMapping("/product")
 	public String setupForm(Map<String, Object> map){
 		Product product = new Product();

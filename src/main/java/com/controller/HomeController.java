@@ -1,11 +1,14 @@
 package com.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.model.Hub;
 import com.service.CartItemsService;
 
 @Controller
@@ -52,7 +55,12 @@ public class HomeController {
 		return"viewall2";
 	}
 	
-	
-	
+	@RequestMapping("/track")
+	public String GetTrack(Map<String, Object> map)
+	{
+		Hub hub=new Hub();
+		map.put("hub",hub);
+		return"TrackMyOrder";
+	}
 	
 }

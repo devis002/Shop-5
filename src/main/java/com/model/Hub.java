@@ -4,8 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Hub {
@@ -16,9 +14,17 @@ public class Hub {
 	private String time;
 	private String location;
 	private String status;
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="orderId")
-	private Orders orders;
+	private Orders orders;*/
+	private int orderId;
+	
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
 	public int getId() {
 		return id;
 	}
@@ -49,12 +55,12 @@ public class Hub {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Orders getOrders() {
+	/*public Orders getOrders() {
 		return orders;
 	}
 	public void setOrders(Orders orders) {
 		this.orders = orders;
-	}
+	}*/
 	
 	
 }

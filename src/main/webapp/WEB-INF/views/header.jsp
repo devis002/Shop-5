@@ -117,6 +117,7 @@ div.desc {
 					<!-- Add Product Only used by admin -->
 				<security:authorize access="hasRole('ROLE_ADMIN')">
 					<li><a href="<c:url value="/product"/>" style="color: white">AddProduct</a></li>
+					<li><a href="<c:url value="/Trackmanage"/>" style="color: white">TrackManage</a></li>
 				</security:authorize>
 			</ul>
 			
@@ -127,6 +128,7 @@ div.desc {
 							class="glyphicon glyphicon-user"></span>Hi..${pageContext.request.userPrincipal.name}
 					</a></li>
 					<security:authorize access="hasRole('ROLE_USER')">
+					<li><a href="<c:url value="/track"/>" style="color: white">TrackMyOrder</a></li>
 						<li><a href="<c:url value="/cart"/>" style="color: white"><span
 								class="glyphicon glyphicon-shopping-cart"><span class="badge">${cartlength}</span></span>MyCart</a></li>
 					</security:authorize>

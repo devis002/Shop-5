@@ -12,7 +12,7 @@ public class Email {
 	public void send(String email,int orderid)
 	{
 	
-		String toAddr = "starsibi@gmail.com";
+		String toAddr = email;
 		String fromAddr = "clickdslr@hotmail.com";
  
 		// email subject

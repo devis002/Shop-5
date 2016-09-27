@@ -9,7 +9,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Black+Ops+One&effect=wallpaper">
-
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Viewall</title>
 
@@ -38,7 +38,7 @@
 
 							<h3>
 								<hr>
-								<center><label><i class="fa fa-inr" style="color:black" ><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></i></label></center>
+								<center><label><i class="fa fa-inr" style="color:black" ><strike><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strike></i></label></center>
 							</h3>
 							<hr>
 						</div>
