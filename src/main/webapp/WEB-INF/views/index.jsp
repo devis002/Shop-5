@@ -11,6 +11,10 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="resources/Productslider.css">
+<link href="<c:url value="/resources/css/Productslider.css"/>" rel="stylesheet">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>
 <style>
 body {
@@ -207,6 +211,64 @@ div.desc {
 			</div>
 		</div>
 		<!--row Ends-->
+		<hr>
+		<div class="container">
+   		 <div class="row">
+			<div class="row">
+            	<div class="col-md-9">
+                <h3>
+                Deals Of the Day
+                </h3>
+            </div>
+            <div class="col-md-3">
+                <!-- Controls -->
+                <div class="controls pull-right hidden-xs">
+                    <a class="left fa fa-chevron-left btn btn-primary" href="#carousel-example-generic"
+                        data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-primary" href="#carousel-example-generic"
+                            data-slide="next"></a>
+                </div>
+            </div>
+        </div>
+       
+	   <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="row">
+                    <c:forEach items="${productlist}" var="product">
+                        <div class="col-sm-4">
+                            <div class="col-item">
+                                <div class="photo">
+                                    <img src="<c:url value="resources/images/${product.imagename}.jpg"/>" class="img-responsive" alt="a" />
+                                </div>
+                                    <div class="row">
+                                        <div class="price col-md-6">
+                                            <h5>Sample Product</h5>
+                                            <h3 class="price-text-color"> <i class="fa fa-inr" style="color:black" ><fmt:formatNumber value="${product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/> </i> </h3>
+                                            <h4><i class="fa fa-inr" style="color:black" >  <strike><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strike></i></h4>
+                                           
+                                        </div>
+                                        <div class="rating col-md-6">
+                                           <h3 class="price-text-color" style="color:grey">
+                                                ${product.discount}% off</h3>
+                                        </div>
+                                    </div>
+                                    <div class="separator clear-left">
+                                        <%-- <p class="btn-add">
+                                            <i class="fa fa-shopping-cart"></i><a href="<c:url value='desc/${product.productid}'/>" class="hidden-sm">Add to cart</a></p> --%>
+                                        <p class="btn-details">
+                                            <i class="fa fa-list"></i><a href="<c:url value='desc/${product.productid}'/>" class="hidden-sm">More details</a></p>
+                                    </div>
+                                    <div class="clearfix">
+                                    </div>
+                            </div>
+                        </div>
+                      </c:forEach>
+                     </div>
+                  </div>
+              </div>
+           </div>
+	</div>
 	</div>
 <!--fourt Container Ends-->
 </body>

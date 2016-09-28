@@ -39,7 +39,7 @@ public class Cart {
     private String time;
     
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "productId")
     private Product product;
 	

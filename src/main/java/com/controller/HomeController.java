@@ -9,12 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.model.Hub;
+import com.model.Reviews;
 import com.service.CartItemsService;
+import com.service.ProductService;
 
 @Controller
 public class HomeController {
 	@Autowired
 	CartItemsService cartService;
+	@Autowired
+	private ProductService productService;
 	
 	@RequestMapping("/crudoper")
 	public String prod()
@@ -39,8 +43,9 @@ public class HomeController {
 	}
 	
 	@RequestMapping({ "/", "index","home" })
-	public String viewindex(HttpSession session) {
+	public String viewindex(HttpSession session,Map<String, Object> map) {
 		session.setAttribute("cartlength", cartService.cartLength());
+		map.put("productlist",productService.getdeals());
 		return "index";
 	}
 
@@ -62,5 +67,6 @@ public class HomeController {
 		map.put("hub",hub);
 		return"TrackMyOrder";
 	}
+	
 	
 }

@@ -13,5 +13,6 @@ public interface ProductDao {
 	public Product getProduct(int productId);
 	public List getAllProduct();
 	public List getnikon(String brand);
+	public List getdeals();
 
 }

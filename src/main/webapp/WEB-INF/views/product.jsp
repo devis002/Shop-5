@@ -39,9 +39,9 @@ font-weight:bold;
 		<form:form action="crudoper" method="POST"
 			enctype="multipart/form-data" commandName="product">
 			<div class="row">
-				<div class="col-sm-2"></div>
+				<div class="col-sm-2"><label for="sel1">Select Category:</label></div>
 				<div class="form-group col-md-5">
-					<label for="sel1">Select list:</label>
+					
 					<form:select class="form-control " path="category" id="sel1">
 						<form:option value="Nikon">Nikon</form:option>
 						<form:option value="Canon">Canon</form:option>
@@ -52,7 +52,7 @@ font-weight:bold;
 
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="email">ProductId:</label>
+					<label class="control-label col-md-2" for="email">Product Id:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="email"
 							placeholder="Enter id" path="productid"></form:input>
@@ -60,9 +60,10 @@ font-weight:bold;
 					</div>
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="pwd">ProductName:</label>
+					<label class="control-label col-md-2" for="pwd">Product Name:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="pwd"
 							placeholder="Enter name" path="productname"></form:input>
@@ -73,29 +74,29 @@ font-weight:bold;
 
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="pwd">ProductQuantity:</label>
+					<label class="control-label col-md-2" for="pwd">Product Quantity:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="pwd"
 							placeholder="Enter quantity" path="productquantity"></form:input>
 						<form:errors path="productquantity" cssClass="error" />
 					</div>
 				</div>
-
 			</div>
+			
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="pwd">ProductPrice:</label>
+					<label class="control-label col-md-2" for="pwd">Product Price:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="pwd"
 							placeholder="Enter price" path="productprice"></form:input>
 						<form:errors path="productprice" cssClass="error" />
 					</div>
 				</div>
-
 			</div>
+			
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="pwd">ProductDescription:</label>
+					<label class="control-label col-md-2" for="pwd">Product Description:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="pwd"
 							placeholder="Enter description" path="productdescription"></form:input>
@@ -103,7 +104,29 @@ font-weight:bold;
 					</div>
 				</div>
 			</div>
-
+			
+			<div class="row">
+				<div class="form-group">
+					<label class="control-label col-md-2" for="pwd">Product Discount:</label>
+					<div class="col-md-5">
+						<form:input type="name" class="form-control" id="pwd"
+							placeholder="Enter discount" path="discount"></form:input>
+						<form:errors path="discount" cssClass="error" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-sm-2"><label for="sel1">Deals of the Day</label></div>
+					<div class="form-group col-md-5">
+					
+					<form:select class="form-control " path="status" id="sel1">
+						<form:option value="false">Disable</form:option>
+						<form:option value="True">Enable</form:option>
+					</form:select>
+				</div>
+			</div>
+			
 			<div class="row">
 				<div class="form-group">
 					<label class="control-label col-md-2" for="pwd">Image:</label>
@@ -113,18 +136,17 @@ font-weight:bold;
 						<form:errors path="image" cssClass="error" />
 					</div>
 				</div>
-
 			</div>
+			
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-md-2" for="pwd">Imagename:</label>
+					<label class="control-label col-md-2" for="pwd">Image name:</label>
 					<div class="col-md-5">
 						<form:input type="name" class="form-control" id="pwd"
 							placeholder="Enter imagename" path="imagename"></form:input>
 						<form:errors path="imagename" cssClass="error" />
 					</div>
 				</div>
-
 			</div>
 
 			<div class="row">
@@ -133,10 +155,11 @@ font-weight:bold;
 						<button type="submit" name="action" value="Add"
 							class="btn btn-default">Add</button>
 						<button type="submit" name="action" value="Edit"
-							class="btn btn-default">Edit</button>
+							class="btn btn-default">Update</button>
 					</div>
 				</div>
 			</div>
+			
 		</form:form>
 	</div>
 </body>

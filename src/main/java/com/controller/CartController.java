@@ -42,7 +42,7 @@ public class CartController {
 			{	
 				int quantity=crt.get(i).getQuantity()+1;
 				crt.get(i).setQuantity(quantity);
-				int price=pr.getProductprice()*quantity;
+				int price=pr.getDiscountPrice()*quantity;
 				crt.get(i).setTotalPrice(price);
 				cartService.update(crt.get(i));
 				return "redirect:/desc/"+id ;
@@ -50,7 +50,7 @@ public class CartController {
 		}
 		//it will add the new product
 		cart.setQuantity(1);
-		cart.setTotalPrice(pr.getProductprice());
+		cart.setTotalPrice(pr.getDiscountPrice());
 		cart.setProduct(pr);
 		cartService.add(cart);
 		session.setAttribute("cartlength", cartService.cartLength());

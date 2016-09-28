@@ -46,7 +46,7 @@
                         <input type="text" class="form-control" id="exampleInputEmail1" value="${cart.quantity}">
                         </td> --%>
                          <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.quantity}" /></strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.totalPrice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1">
                        <a href="<c:url value="/delete/cart/${cart.cartItemId}"/>"> <button type="button" class="btn btn-danger" >

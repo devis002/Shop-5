@@ -112,8 +112,7 @@ public class ProductController {
 		switch(action.toLowerCase()){	
 		case "add":
 			MultipartFile file=product.getImage();
-			System.out.println(product.getCategory());
-			
+			product.setDiscountPrice(product.getProductprice()-(product.getProductprice()*product.getDiscount()/100));
 			productService.add(product);
 			if (!file.isEmpty()) 
 			{

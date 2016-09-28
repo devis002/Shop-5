@@ -25,6 +25,7 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript">
     function Validate() {
     	alert("Your item is added Sucessfully");
@@ -33,6 +34,7 @@
 </head>
 
 <body>
+<jsp:include page="includes.jsp" />
 <jsp:include page="header.jsp" />
 	<div class="row">
 	<div class="col-md-4">
@@ -45,7 +47,7 @@
 		<div class="col-md-6">
 			<center><h1>${product.category}${product.productname}</h1></center>
 			<hr>
-			<center><h3>RS${product.productprice}</h3></center>
+			<center><h3><i class="fa fa-inr" style="color:white" ><fmt:formatNumber value="${product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/></i></h3></center>
 			<hr>
 			
 			<center><div class="col-md-12">
@@ -70,6 +72,8 @@
 			</div>
 	</div>
 </div>
+<hr>
+<a href="<c:url value="/review/${product.productid}"/>"><button type="button" class="btn btn-success">Write Review</button></a>
 </body>	
 <jsp:include page="footer.jsp" />
 </html>

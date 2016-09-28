@@ -43,5 +43,11 @@ public class ProductDaoImpl implements ProductDao{
 		return session.getCurrentSession().createQuery("from Product where category='"+brand+"'").list();
 	}
 
+	@Override
+	public List getdeals() {
+		
+		return session.getCurrentSession().createQuery("from Product where status='TRUE'").list();
+	}
+
 
 }

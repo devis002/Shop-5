@@ -48,5 +48,11 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getnikon(brand);
 	}
 
+	@Transactional
+	public List getdeals() {
+		
+		return productDao.getdeals();
+	}
+
 
 }

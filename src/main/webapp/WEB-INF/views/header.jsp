@@ -19,8 +19,7 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link href="<c:url value="/resources/bootstrap/css/style.css"/>"
-	rel="stylesheet">
+<link href="<c:url value="/resources/bootstrap/css/hoverdrop.css"/>" rel="stylesheet">
 </head>
 <style>
 body {
@@ -101,9 +100,8 @@ div.desc {
 				<li><a href="<c:url value="/home"/>" style="color: white">Home</a></li>
 				<li><a href="<c:url value="/viewall"/>" style="color: white">view all</a></li>
 				<li><a href="<c:url value="/Angularview"/>" style="color: white">Angular view</a></li>
-				<security:authorize access="hasRole('ROLE_USER')">
-				<li><a href="<c:url value="/myorders"/>" style="color: white">Myorders</a></li> 
-				</security:authorize>
+				
+				
 				<!--DropDown Button 1-->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" style="color: white">Brands<strong
@@ -112,23 +110,45 @@ div.desc {
 						<li><a href="<c:url value="/nikonbrand"/>">Nikon</a></li>
 						<li><a href="<c:url value="/canonbrand"/>">Canon</a></li>
 						<li><a href="<c:url value="/sonybrand"/>">Sony</a></li>
-
-					</ul></li>
-					<!-- Add Product Only used by admin -->
+					</ul>
+				</li>
+				
+				<!-- Add Product Only used by admin -->
 				<security:authorize access="hasRole('ROLE_ADMIN')">
-					<li><a href="<c:url value="/product"/>" style="color: white">AddProduct</a></li>
-					<li><a href="<c:url value="/Trackmanage"/>" style="color: white">TrackManage</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" style="color: white">Admin<strong
+						class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/product"/>" >AddProduct</a></li>
+						<li><a href="<c:url value="/Trackmanage"/>" >TrackManage</a></li>
+						<li><a href="<c:url value="/adminorders"/>">Order Table</a></li> 
+					</ul>
+				</li>
+				</security:authorize>
+				
+				
+				
+					<!-- Add Product Only used by admin -->
+				<security:authorize access="hasRole('ROLE_USER')">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" style="color: white">User Option<strong
+						class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/track"/>">TrackMyOrder</a></li>
+						<li><a href="<c:url value="/myorders"/>">Myorders</a></li> 
+						
+					</ul>
+				</li>
 				</security:authorize>
 			</ul>
 			
-			
+					
 			<ul class="nav navbar-nav navbar-right">
 				<c:if test="${!empty pageContext.request.userPrincipal.name}">
 					<li><a href="<c:url value="/home"/>" style="color: white"> <span
 							class="glyphicon glyphicon-user"></span>Hi..${pageContext.request.userPrincipal.name}
 					</a></li>
 					<security:authorize access="hasRole('ROLE_USER')">
-					<li><a href="<c:url value="/track"/>" style="color: white">TrackMyOrder</a></li>
 						<li><a href="<c:url value="/cart"/>" style="color: white"><span
 								class="glyphicon glyphicon-shopping-cart"><span class="badge">${cartlength}</span></span>MyCart</a></li>
 					</security:authorize>

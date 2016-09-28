@@ -38,8 +38,12 @@
 
 							<h3>
 								<hr>
-								<center><label><i class="fa fa-inr" style="color:black" ><strike><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strike></i></label></center>
+								<center><label><i class="fa fa-inr" style="color:black" ><strike><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strike></i></label><class style="color:green">  ${product.discount}% off</class></center>
+								
 							</h3>
+							<h2>
+							<center><label><i class="fa fa-inr" style="color:black" ><fmt:formatNumber value="${product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/></i></label></center>
+							</h2>
 							<hr>
 						</div>
 					</div>

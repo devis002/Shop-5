@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.Check;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -35,9 +33,35 @@ public class Product {
 	private String imagename;
 	@Transient
 	private  MultipartFile image;
-
-
+	@NotNull(message="discount is needed minimum 5%")
+	private Integer discount;
+	private Integer discountPrice;
+	private Boolean status;
 	
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	public Integer getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+
+	public Integer getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(Integer discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
 	public String getImagename() {
 		return imagename;
 	}
