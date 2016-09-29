@@ -1,5 +1,9 @@
 package com.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -39,9 +43,17 @@ public class ReviewController {
 	@RequestMapping("review/addreview/{productid}")
 	public String savereview(@ModelAttribute Reviews review,BindingResult result,@PathVariable("productid")int id)
 	{	Product product=new Product();
+	 	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	 	Date date = new Date();
+	 	DateFormat dateFormats = new SimpleDateFormat("hh:mm:ss a");
+	 	Calendar cal = Calendar.getInstance();
+	 	String Date=dateFormat.format(date);
+        String Time=dateFormats.format(cal.getTime());
+        review.setDate(Date);
+        review.setTime(Time);
 		product.setproductid(id);
 		review.setProduct(product);
 		reviewService.add(review);
-		return "viewall2";
+		return "redirect:/viewall";
 	}
 }

@@ -15,9 +15,24 @@ public class Reviews {
 	private String title;
 	private String description;
 	private String name;
+	private String date;
+	private String time;
 	@ManyToOne
 	@JoinColumn(name = "productId")
 	private Product product;
+	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	public int getReviewid() {
 		return reviewid;
 	}

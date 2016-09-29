@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.model.CartItems;
 import com.model.Product;
 import com.service.ProductService;
+import com.service.ReviewService;
 
 
 
@@ -28,6 +29,8 @@ public class ProductController {
 	private ServletContext servletContext;
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping("/product")
 	public String setupForm(Map<String, Object> map){
@@ -84,6 +87,7 @@ public class ProductController {
 		product=productService.getProduct(id);
 		map.put("product", product);
 		map.put("productList", productService.getAllProduct());
+		map.put("reviewlist", reviewService.getReviewById(id));
 		return "proddesc";
 		
 	}

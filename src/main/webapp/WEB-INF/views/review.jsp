@@ -47,10 +47,9 @@ font-weight:bold;
 		<div class="col-md-6">
 			<center><h1>${product.category}${product.productname}</h1></center>
 			<hr>
-			<center><h3><i class="fa fa-inr" style="color:white" ><fmt:formatNumber value="${product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/></i></h3></center>
-			<hr>
 		</div>
-	</div></div>
+	</div>
+</div>
 		
 		<form:form action="addreview/${product.productid}" method="POST" commandName="review">
 			<div class="row">
