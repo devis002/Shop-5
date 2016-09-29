@@ -1,5 +1,6 @@
 package com.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,7 @@ public class Reviews {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int reviewid;
 	private String title;
+	@Column(name="description",length=65535)
 	private String description;
 	private String name;
 	private String date;

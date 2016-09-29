@@ -13,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -39,7 +42,8 @@ public class Cart {
     private String time;
     
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
+	//@OnDelete(action=OnDeleteAction.CASCADE)
     @JoinColumn(name = "productId")
     private Product product;
 	
