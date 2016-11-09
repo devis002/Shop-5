@@ -1,20 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Clickart</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>"rel="stylesheet">
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/Productslider.css">
 <link href="<c:url value="/resources/css/Productslider.css"/>" rel="stylesheet">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>
 <style>
 body {
@@ -80,7 +77,7 @@ div.desc {
 	<!--Navigation Bar Ends Here-->
 <div class="container">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-2 col-lg-2">
 			<hr>
 				<img src ="<c:url value="resources/images/mainimages/headerbg.jpg" />">
 			</div>
@@ -99,7 +96,7 @@ div.desc {
 	<!--Third Container Starts Here-->
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2 menu">
+			<div class="col-md-2 col-lg-2 menu">
 				<ul>
 					<li>All BRANDS</li>
 					<a href="nikonbrand">
@@ -111,7 +108,7 @@ div.desc {
 				</ul>
 			</div>
 			<!--Carousel Starts Here-->
-			<div class="col-md-7">
+			<div class="col-md-7 col-lg-7">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					<!-- Indicators -->
 					<ol class="carousel-indicators">
@@ -166,11 +163,11 @@ div.desc {
 			</div>
 			<!--Carousel Ends Here-->
 			<!--OfferZone Grid Starts Here-->
-			<div class="col-md-3">
+			<div class="col-md-3 col-lg-3">
 				<div class="aside">
 					<h2>Dslr OfferZone</h2>
 					<p>Buy a cam with smile</p>
-					<a href="nikon"><img
+					<a href="#"><img
 						src="<c:url value="resources/images/mainimages/ad1.gif"/>"
 						height="150" width="150"></a>
 
@@ -184,25 +181,26 @@ div.desc {
 	<center>
 		<h1>Brands</h1>
 	</center>
+	
 	<!--Fourth Container Starts-->
 	<div class="container">
 		<!--row Start-->
 		<div class="row">
-			<div class="col-md-4">
+			<div class="col-md-4 col-lg-4">
 				<p>
 					<a href="nikonbrand"><img
 						src="<c:url value="https://s3-us-west-2.amazonaws.com/pcw-uploads/logos/nikon-promo-codes-coupons.png" />"
 						height="300" width="350"></a>
 				</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-lg-4">
 				<p>
 					<a href="canonbrand"><img
 						src="<c:url value="http://associatednews.info/content/wp-content/uploads/2011/10/black-canon.jpg" />"
 						height="280" width="350"></a>
 				</p>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-4 col-lg-4">
 				<p>
 					<a href="sonybrand"><img
 						src="<c:url value="http://www.radovanstolarcik.com/wp-content/themes/radonew/images/portfolio/thumbs/sony1.jpg" />"
@@ -215,14 +213,14 @@ div.desc {
 		<div class="container">
    		 <div class="row">
 			<div class="row">
-            	<div class="col-md-9">
+            	<div class="col-md-9 ">
                 <h3>
                 Deals Of the Day
                 </h3>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 ">
                 <!-- Controls -->
-                <div class="controls pull-right hidden-xs">
+                <div class="controls pull-right hidden-lg">
                     <a class="left fa fa-chevron-left btn btn-primary" href="#carousel-example-generic"
                         data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-primary" href="#carousel-example-generic"
                             data-slide="next"></a>
@@ -230,32 +228,30 @@ div.desc {
             </div>
         </div>
        
-	   <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+	   <div id="carousel-example-generic" class="carousel slide hidden-lg" data-ride="carousel">
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
                     <div class="row">
                     <c:forEach items="${productlist}" var="product">
-                        <div class="col-sm-4">
+                        <div class="col-sm-4 ">
                             <div class="col-item">
                                 <div class="photo">
                                     <img src="<c:url value="resources/images/${product.imagename}.jpg"/>" class="img-responsive" alt="a" />
                                 </div>
                                     <div class="row">
-                                        <div class="price col-md-6">
+                                        <div class="price col-md-6 ">
                                             <h5>Sample Product</h5>
                                             <h3 class="price-text-color"> <i class="fa fa-inr" style="color:black" ><fmt:formatNumber value="${product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/> </i> </h3>
                                             <h4><i class="fa fa-inr" style="color:black" >  <strike><fmt:formatNumber value="${product.productprice}" type="currency" pattern="#,##,##,##,###.00"/></strike></i></h4>
                                            
                                         </div>
-                                        <div class="rating col-md-6">
+                                        <div class="rating col-md-6 ">
                                            <h3 class="price-text-color" style="color:grey">
                                                 ${product.discount}% off</h3>
                                         </div>
                                     </div>
                                     <div class="separator clear-left">
-                                        <%-- <p class="btn-add">
-                                            <i class="fa fa-shopping-cart"></i><a href="<c:url value='desc/${product.productid}'/>" class="hidden-sm">Add to cart</a></p> --%>
                                         <p class="btn-details">
                                             <i class="fa fa-list"></i><a href="<c:url value='desc/${product.productid}'/>" class="hidden-sm">More details</a></p>
                                     </div>

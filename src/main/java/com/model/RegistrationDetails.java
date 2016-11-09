@@ -8,7 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
 
 
@@ -18,12 +20,16 @@ import org.springframework.stereotype.Component;
 	@Component
 	public class RegistrationDetails implements Serializable{
 		private static final long serialVersionUID = 4657462015039726030L;
+		@NotNull(message="Name Is Mandatory")
 		private String name;
+		@NotNull(message="Password Should match the correct format")
 		private String password;
 		@Transient
 		private String confirm_password;
 		@Id
+		@Email
 		private String mail_id;
+		@NotNull(message="Please Enter 10 digit mobile number")
 		private String mobile_number;
 		private Boolean enable;
 		@OneToOne

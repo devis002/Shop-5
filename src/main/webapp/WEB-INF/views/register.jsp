@@ -7,14 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
- <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
+ <link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>"rel="stylesheet">
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="resources/js/bootbox.min.js"></script>
 <link
 	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700'
@@ -117,21 +112,34 @@ label {
 	animation-duration: 1s;
 }
 
+.error {
+	color: #ff0000;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
 </style>
 </head>
 <body>
 <jsp:include page="includes.jsp" />
 <jsp:include page="header.jsp" />
 	<div class="container">
+	
 		<div class=row>
 			<div class='login' style="color:black">
 				<h1>Registration</h1>
-				<form:form modelAttribute="registrationDetails"
-					accept-charset="utf-8" class="form">
-					<form:errors path="*" cssClass="errorblock" element="div" />
-
+				<form:form modelAttribute="registrationDetails" accept-charset="utf-8"
+				method="post" class="form" role="form">
+					<form:errors path="*" cssClass="errorblock" element="div" /> 
+					
+					<h4>Name:</h4>
 					<form:input path="name" pattern="[a-zA-Z]{3,30}" required="true"
-						class="form-control input-lg" placeholder="Name" />
+						class="form-control input-lg" placeholder="Name" title="Please enter Alphabets from range 3 to 30" />
 					<c:forEach
 						items="${flowRequestContext.messageContext.getMessagesBySource('name')}"
 						var="err">
@@ -140,10 +148,11 @@ label {
 						</div>
 					</c:forEach>
 					<br />
-
-					<form:input path="mail_id"
+					
+					<h4>Email:</h4>
+					<form:input path="mail_id" id="mailid" name="mailid"
 						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required="true"
-						class="form-control input-lg" placeholder="Your Email" />
+						class="form-control input-lg" placeholder="Your Email" title="Ex:abc@xyz.com"/>
 					<c:forEach
 						items="${flowRequestContext.messageContext.getMessagesBySource('mail_id')}"
 						var="err">
@@ -153,10 +162,10 @@ label {
 					</c:forEach>
 					<br />
 
-
+					<h4>Mobile Number:</h4>	
 					<form:input path="mobile_number" pattern="[9|7|8][0-9]{9}"
 						required="true" class="form-control input-lg"
-						placeholder="Your Mobile Number" />
+						placeholder="Your Mobile Number" title="Please enter 10digit Numeric value start with 9or8or7" />
 					<c:forEach
 						items="${flowRequestContext.messageContext.getMessagesBySource('mobile_number')}"
 						var="err">
@@ -166,62 +175,87 @@ label {
 					</c:forEach>
 					<br />
 
-
-
-					<form:password path="password" id="txtPassword" required="true"
-						class="form-control input-lg" placeholder="Password" />
-					<c:forEach
-						items="${flowRequestContext.messageContext.getMessagesBySource('password')}"
-						var="err">
-						<div>
-							<span>${err.text}</span>
-						</div>
-					</c:forEach>
-					<br />
-
-
-					<form:password path="confirm_password" id="txtConfirmPassword"
-						required="true" class="form-control input-lg"
-						placeholder="Confirm Password" />
-					<c:forEach
-						items="${flowRequestContext.messageContext.getMessagesBySource('confirm_password')}"
-						var="err">
-						<div>
-							<span>${err.text}</span>
-						</div>
-					</c:forEach>
-					<br />
-
-
-
-					<div class="row">
-						<div class="col-md-6">
-							<button class="btn btn-lg btn-primary btn-block signup-btn"
-								name="_eventId_submit" type="submit" id="btnSubmit"
-								value="submit" onclick="return Validate()">Register</button>
-						</div>
+					<h4>Password</h4>
+					<form:input type="password" id="password" path="password"
+					name="password" required="true" class="form-control input-lg"
+					placeholder="Password" />
+				<c:forEach
+					items="${flowRequestContext.messageContext.getMessagesBySource('password')}"
+					var="err">
+					<div>
+						<span>${err.text}</span>
 					</div>
-				</form:form>
+				</c:forEach>
+				<br />
+				
+				<h4>Confirm Password</h4>
+				<form:input type="password" id="confirmpassword"
+					path="confirm_password" name="confirmpassword" required="true"
+					class="form-control input-lg" placeholder="ConfirmPassword" />
+				<c:forEach
+					items="${flowRequestContext.messageContext.getMessagesBySource('confirm_password')}"
+					var="err">
+					<div>
+						<span>${err.text}</span>
+					</div>
+				</c:forEach>
+				<br />
+
+
+
+
+
+				<div class="row">
+					<div class="col-xs-4">
+
+						<button class="btn btn-lg btn-primary btn-block signup-btn"
+							name="_eventId_submit" type="submit" value="submit">Register</button>
+
+
+					</div>
+				</div>
+				
+<script>
+
+/* function emailcheck()
+{
+	
+	 var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	 var mail= document.getElementById("mailid");
+	 if (reg.test(mail.value) == false) 
+     { alert("f1")
+		 mailid.setCustomValidity("Passwords Don't Match");
+        alert("f2")
+     }
+	 else{
+		 alert("true")
+		 mailid.setCustomValidity("");
+	 }
+    
+     
+
+}
+mailid.onchange=emailcheck; */
+
+function validatePassword(){
+	 var password = document.getElementById("password")
+	 ,confirmpassword = document.getElementById("confirmpassword")
+	  
+	if(password.value != confirmpassword.value){
+		confirmpassword.setCustomValidity("Passwords Don't Match");
+	}
+	else {
+		confirmpassword.setCustomValidity("");
+	}
+	 
+}
+ password.onchange=validatePassword;
+ confirmpassword.onkeyup=validatePassword;	
+</script>
+			</form:form>
 			</div>
 		</div>
 	</div>
 </body>
 
-
-<script type="text/javascript">
-    function Validate() {
-        var password = document.getElementById("txtPassword").value;
-        var confirmPassword = document.getElementById("txtConfirmPassword").value;
-        
-        if (password != confirmPassword) {
-        	bootbox.alert({
-                message: "Password do not match",
-                size: 'small'
-            });
-            alert("Passwords do not match.");
-            return false;
-        }
-        return true;
-    }
-</script>
 </html>

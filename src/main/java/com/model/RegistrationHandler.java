@@ -5,10 +5,13 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
+import com.service.LoginService;
 import com.service.RegisterService;
 
 @Component
 public class RegistrationHandler {
+	@Autowired
+	private LoginService loginservice;
 
 	public RegistrationDetails  startFlow() {
 		
@@ -39,6 +42,19 @@ public class RegistrationHandler {
 		
 		
 	}
+	
+	public String loginuser(RegistrationDetails regdetails) {
+		boolean isvaliduser = false;
+		String status = "success";
+		isvaliduser = loginservice.checkUser(regdetails);
+		if (isvaliduser == true) {
+			return status = "failure";
+		}
+
+		return status;
+
+	}
+	
 	@Autowired 
 	RegisterService regser;
 	

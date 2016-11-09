@@ -6,19 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon"  href="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<!-- jQuery library -->
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="icon"  href="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png">
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>"rel="stylesheet">
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="<c:url value="/resources/bootstrap/css/hoverdrop.css"/>" rel="stylesheet">
 </head>
 <style>
@@ -93,7 +92,7 @@ div.desc {
 		<div class="container-fluid">
 			<div class="navbar-header">
 			<!-- Clickart logo -->
-			<a class="navbar-brand" href="<c:url value="/home"/>"><img class="img-responsive logo" src="https://cdn4.iconfinder.com/data/icons/adore/118/Camera.png" alt="" width="50" height="50"></a>
+			<a class="navbar-brand" href="<c:url value="/home"/>"><img class="img-responsive logo" src="<c:url value="resources/images/Camera.png"/>" alt="" width="50" height="50"></a>
 				<a class="navbar-brand" style="color: white" href="<c:url value="/home"/>">Clickart</a>
 			</div>
 			<ul class="nav navbar-nav">

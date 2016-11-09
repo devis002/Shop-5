@@ -5,16 +5,9 @@
 <head>
 <title>Login Page</title>
 <jsp:include page="includes.jsp" />
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="<c:url value="/resources/bootstrap/css/bootstrap.min.css"/>"rel="stylesheet">
+<script src="<c:url value="/resources/bootstrap/js/bootstrap.min.js"/>"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link href="<c:url value="/resources/bootstrap/css/style.css"/>"
 	rel="stylesheet">
 <style>
@@ -102,7 +95,7 @@
 }
 body {
   background: black; /* fallback for old browsers */
-  background-image: url("https://media.giphy.com/media/3o6ZtjMYa3hQMpHPLq/giphy.gif");
+  background-image: url("https://thumbs.dreamstime.com/z/photo-frames-christmas-ornaments-7248437.jpg");
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
@@ -128,12 +121,15 @@ body {
 	<c:if test="${not empty message}"><div class="alert alert-success" role="alert" style="color:black">${message}</div></c:if>
    <form action="<c:url value='j_spring_security_check'/>"  method="POST" id="target">
    		<h1 style=color:black>Login</h1>
+   		<label class="col-md-4" style=color:black>Mail Id</label>
      <input name="mail_id" type="text" style=color:black placeholder="mailid"/>
+     <label class="col-md-2" style=color:black>Password</label>
       <input name="password" type="password" style=color:black placeholder="password"/>
      <button>login</button>
      </form>
   </div>
 </div>
+
 </body>
 
 </html>

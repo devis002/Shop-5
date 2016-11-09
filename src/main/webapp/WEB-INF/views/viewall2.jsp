@@ -20,10 +20,9 @@
 <div class="row">
 <c:forEach items="${productList}" var="product">
 		<div class="col-xs-3">
-			<div class="thumbnail">
-				
+			<div class="thumbnail zoom" id="ex1">
 				<img src="<c:url value="resources/images/${product.imagename}.jpg"/>"
-					class="img-responsive">
+					class="img-responsive" >
 				<div class="caption">
 					<div class="row">
 						<div class="font-effect-wallpaper" class="col-md-12 col-xs-12" style="color:red">

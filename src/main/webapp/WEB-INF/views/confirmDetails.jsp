@@ -10,10 +10,11 @@
 </head>
 <jsp:include page="includes.jsp" />
 <jsp:include page="header.jsp" />
+<hr>
 <body>
 	<div class="content">
 		<fieldset>
-			<legend>Confirm Details</legend>
+			<legend style=color:white>Confirm Details</legend>
 			<!-- for triggering webflow events using links,
 					 the eventId to be triggered is given in "href" attribute as:
 				 -->

@@ -27,13 +27,7 @@ public class Mailsend {
      }
 	public void mailmethod(String toAddress, String fromAddress, String subject,String msgBody) 
 	{
-		/*SimpleMailMessage msgdetails = new SimpleMailMessage();
-		msgdetails.setFrom(fromAddress);
-		msgdetails.setTo(toAddress);
-		msgdetails.setSubject(subject);
-		msgdetails.setText(msgBody);
-		mailsend.send(msgdetails);
-		*/
+		
 		
 		try{
 			 
@@ -45,9 +39,7 @@ public class Mailsend {
             message.setTo(toAddress);
             message.setSubject(subject);
             message.setText(msgBody);
-            //message.setText("My alternative text", true);
-            //message.addBcc("BCC email");
-            //message.addCc("CC email");
+           
  
             FileSystemResource file = new FileSystemResource("F:/projectscreen/FullScreenshot.jpg");
             message.addAttachment(file.getFilename(), file);

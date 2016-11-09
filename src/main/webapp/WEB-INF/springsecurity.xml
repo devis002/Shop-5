@@ -5,13 +5,13 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<!-- enable  use-expressions -->
+	<!-- enable  use-expressions  -->  
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/**" access="permitAll" />
-
+   
 		<!-- access denied page -->
 		<access-denied-handler error-page="/403" />
 

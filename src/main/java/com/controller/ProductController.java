@@ -105,9 +105,7 @@ public class ProductController {
 	//method for crud operation
 	@RequestMapping(value={"/crudoper","edit/crudoper"}, method=RequestMethod.POST)
 	public String doActions(@ModelAttribute @Valid Product product, BindingResult result, @RequestParam String action,Map<String, Object> map){
-		/*if(product.getProductprice()<=0){
-		result.addError();	
-		}*/
+		
 		if(result.hasErrors())
 		{
 			return "product";
@@ -143,6 +141,7 @@ public class ProductController {
 			break;
 		case "edit":
 			 MultipartFile files=product.getImage();
+			 product.setDiscountPrice(product.getProductprice()-(product.getProductprice()*product.getDiscount()/100));
 			 productService.edit(product);
 			
 			if (!files.isEmpty()) 
@@ -184,4 +183,7 @@ public class ProductController {
 				productService.edit(product);
 			}
 	}
+	
+	
+	
 }

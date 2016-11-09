@@ -13,9 +13,25 @@
 
 	<!-- if not specified the first view state is the starting state -->
 	<view-state id="start" view="register" model="flowScope.registrationDetails">
-		<transition on="submit" to="confirmDetails" />
+		<transition on="submit" to="validate" />
 	</view-state>
 
+	<action-state id="validate">
+		<evaluate
+			expression="registrationHandler.validateDetails(registrationDetails,messageContext)"></evaluate>
+		<transition on="success" to="checkuser" />
+		<transition on="failure" to="start" />
+	</action-state>
+
+	<action-state id="checkuser">
+		<evaluate expression="registrationHandler.loginuser(registrationDetails)"></evaluate>
+		<transition on="success" to="confirmDetails" />
+		<transition on="failure" to="alreadyExists" />
+	</action-state>
+
+
+	<view-state id="alreadyExists" view="alreadyExists" model="flowScope.registrationDetails"> </view-state>
+	
 	<view-state id="confirmDetails" view="confirmDetails" model="flowScope.registrationDetails">
 		<transition on="edit" to="start" />
 		<transition on="submit" to="send" />
@@ -24,13 +40,11 @@
 	<action-state id="send">
 		<evaluate expression="registrationHandler.send(registrationDetails)" />
 		<transition to="save"></transition>
-
 	</action-state>
 
 	<action-state id="save">
 		<evaluate expression="registrationHandler.saveRegister(registrationDetails)" />
 		<transition to="index"></transition>
-
 	</action-state>
 	
 	

@@ -17,6 +17,7 @@
  <script type="text/javascript">
 </script> 
 <body>
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -42,9 +43,7 @@
                                
                             </div>
                         </div></td>
-                        <%-- <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="text" class="form-control" id="exampleInputEmail1" value="${cart.quantity}">
-                        </td> --%>
+                       
                          <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.quantity}" /></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.product.discountPrice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong><fmt:formatNumber value="${cart.totalPrice}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
@@ -61,7 +60,7 @@
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <%-- <fmt:formatNumber value="${total_cost}" type="currency" pattern="##,##,##0"/> --%>
+                       
                         <td class="text-right"><h3><strong><i class="fa fa-inr" style="color:white"><fmt:formatNumber value="${total_cost}" type="currency" pattern="#,##,##,##,###.00"/></i></strong></h3></td>
                     </tr>
                     <tr>
