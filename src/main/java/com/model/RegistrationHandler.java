@@ -69,12 +69,12 @@ public class RegistrationHandler {
 		String status = "success";
 		if(newuser.getName().isEmpty()){
 			messageContext.addMessage(new MessageBuilder().error().source(
-					"fname").defaultText("Name Cannot Be Empty cannot be Empty").build());
+					"name").defaultText("Name Cannot Be Empty cannot be Empty").build());
 			status = "failure";
 		}
 		if(newuser.getMail_id().isEmpty()){
 			messageContext.addMessage(new MessageBuilder().error().source(
-					"email").defaultText("Email cannot be Empty").build());
+					"mail_id").defaultText("Email cannot be Empty").build());
 			status = "failure";
 		}
 		
@@ -88,13 +88,13 @@ public class RegistrationHandler {
 				if(newuser.getPassword() != (newuser.getConfirm_password()))
 					
 			messageContext.addMessage(new MessageBuilder().error().source(
-					"cPassword").defaultText("Conformation password not valid").build());
+					"confirmPassword").defaultText("Conformation password not valid").build());
 			status = "failure";
 			}
 		}
 		if(newuser.getPassword().isEmpty()){
 			messageContext.addMessage(new MessageBuilder().error().source(
-					"phnumber").defaultText("PHONE NUMBER cannot be Empty").build());
+					"phonenumber").defaultText("Phone number cannot be Empty").build());
 			status = "failure";
 		}
 			

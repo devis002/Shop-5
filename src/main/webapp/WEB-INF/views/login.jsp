@@ -125,6 +125,7 @@ body {
      <input name="mail_id" type="text" style=color:black placeholder="mailid"/>
      <label class="col-md-2" style=color:black>Password</label>
       <input name="password" type="password" style=color:black placeholder="password"/>
+     <%-- <a href="<c:url value='password'/>">forgot  password?</a>  --%>
      <button>login</button>
      </form>
   </div>

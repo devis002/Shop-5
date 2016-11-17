@@ -60,6 +60,11 @@ public class HomeController {
 		return"viewall2";
 	}
 	
+	@RequestMapping("/password")
+	public String password()
+	{
+		return "password";
+	}
 	@RequestMapping("/track")
 	public String GetTrack(Map<String, Object> map)
 	{

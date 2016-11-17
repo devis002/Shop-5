@@ -50,7 +50,9 @@
                        <td class="col-sm-1 col-md-2 text-center"><strong><fmt:formatNumber value="${cart.product.productprice * cart.quantity}" type="currency" pattern="#,##,##,##,###.00"/></strong></td>
                         <td class="col-sm-1 col-md-1"> ${cart.date}</td>  
                         <td class="col-sm-2 col-md-2"> ${cart.time}</td> 
-                                             
+                        <%-- <td class="col-sm-2 col-md-2">  <a href="<c:url value='delete/${cart.product.productid}'/>" class="btn btn-default"><span
+								class="	glyphicon glyphicon-trash"></span>Cancel Order</a></td>  --%>
+                        
                     </tr>
                     </c:forEach>
                    

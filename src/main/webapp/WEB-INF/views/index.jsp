@@ -209,7 +209,7 @@ div.desc {
 			</div>
 		</div>
 		<!--row Ends-->
-		<hr>
+		<%-- <hr>
 		<div class="container">
    		 <div class="row">
 			<div class="row">
@@ -265,7 +265,7 @@ div.desc {
               </div>
            </div>
 	</div>
-	</div>
+	</div> --%>
 <!--fourt Container Ends-->
 </body>
 <jsp:include page="footer.jsp" />
